@@ -1,4 +1,4 @@
-import { Card } from "react-bootstrap"
+import { Button, Card } from "react-bootstrap"
 import { formatCurrency } from "../utilities/formatCurrency"
 
 type BookProps = {
@@ -9,14 +9,15 @@ type BookProps = {
 }
 
 export function Book({ id, name, price, imgUrl }: BookProps) {
+    const quantity = 0
     return (
-        <Card>
+        <Card key={id} className="h-100">
             <Card.Img
-                variant="left"
+                className="mx-auto my-4"
                 src={imgUrl}
                 width="200px"
                 height="300px"
-                style={{ objectFit: "cover" }}
+                style={{width: "200px", height: "300px"}}
             />
             <Card.Body className="d-flex flex-column">
                 <Card.Title className="d-flex
@@ -26,6 +27,11 @@ export function Book({ id, name, price, imgUrl }: BookProps) {
                     <span className="fs-2">{name}</span>
                     <span className="ms-2 text-muted">{formatCurrency(price)}</span>
                 </Card.Title>
+                <div className="mt-auto">
+                    {quantity === 0 ? (
+                        <Button className="w-100">Add To Cart</Button>
+                    ) : null}
+                </div>
             </Card.Body>
         </Card>
     )
