@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, ReactNode, useContext, useState } from "react"
 import { Cart } from "../components/Cart"
 
@@ -90,7 +91,7 @@ export function CartProvider({ children }: CartProviderProps) {
             cartQuantity
             }}>
             {children}
-            <Cart />
+            <Cart  isOpen={isOpen}/>
         </CartContext.Provider>
     )
 }

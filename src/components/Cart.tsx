@@ -1,8 +1,15 @@
 import { Offcanvas } from "react-bootstrap";
+import { useCart } from "../context/CartContext";
 
-export function Cart() {
+type CartProps = {
+    isOpen: boolean
+}
+
+export function Cart({isOpen}: CartProps) {
+    const {closeCart} = useCart()
+
   return (
-    <Offcanvas show={true} placement="end">
+    <Offcanvas show={isOpen} onHide={closeCart} placement="end">
       <Offcanvas.Header closeButton>
         <Offcanvas.Title>Cart</Offcanvas.Title>
       </Offcanvas.Header>
