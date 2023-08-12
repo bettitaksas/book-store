@@ -22,8 +22,7 @@ export function CartItem({id, quantity}: CartItemProps){
                     {book?.name}
                     {quantity > 1 && 
                         <span
-                        className="text-muted" style={{fontSize: ".8rem"}}>
-                            x{quantity}
+                        className="text-muted" style={{fontSize: ".8rem"}}> x{quantity}
                         </span>}
                 </div>
                 <div className="text-muted" style={{fontSize: ".9rem"}}>
