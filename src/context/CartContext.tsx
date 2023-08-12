@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from "react"
+import { Cart } from "../components/Cart"
 
 type CartProviderProps = {
     children: ReactNode
@@ -10,10 +11,14 @@ type bookInCart = {
 }
 
 type CartContext = {
+    openCart: () => void
+    closeCart: () => void
     getBookQuantity: (id: number) => number
     increaseCartQuantity: (id: number) => void
     decreaseCartQuantity: (id: number) => void
     removeFromCart: (id: number) => void
+    cartQuantity: number
+    booksInCart: bookInCart[]
 }
 
 const CartContext = createContext({} as CartContext)
@@ -23,8 +28,14 @@ export function useCart() {
 }
 
 export function CartProvider({ children }: CartProviderProps) {
+    const [isOpen, setIsOpen] = useState(false)
     const [booksInCart, setBooksInCart] = useState<bookInCart[]>([])
+
+    const cartQuantity = booksInCart.reduce((quantity, item) => item.quantity + quantity, 0)
     
+    const openCart = () => setIsOpen(true)
+    const closeCart = () => setIsOpen(false)
+
     function getBookQuantity(id: number){
         return booksInCart.find(item => item.id === id)?.quantity || 0
     }
@@ -68,8 +79,18 @@ export function CartProvider({ children }: CartProviderProps) {
     }
     
     return (
-        <CartContext.Provider value={{getBookQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart}}>
+        <CartContext.Provider value={{
+            getBookQuantity, 
+            increaseCartQuantity, 
+            decreaseCartQuantity, 
+            removeFromCart,
+            openCart,
+            closeCart,
+            booksInCart,
+            cartQuantity
+            }}>
             {children}
+            <Cart />
         </CartContext.Provider>
     )
 }
