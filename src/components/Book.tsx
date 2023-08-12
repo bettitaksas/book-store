@@ -30,7 +30,20 @@ export function Book({ id, name, price, imgUrl }: BookProps) {
                 <div className="mt-auto">
                     {quantity === 0 ? (
                         <Button className="w-100">Add To Cart</Button>
-                    ) : null}
+                    ) : 
+                        <div className="d-flex align-items-center flex-column"
+                            style={{gap: ".5rem"}}>
+                                <div className="d-flex align-items-center justify-content-center"
+                                    style={{gap: ".5rem"}}>
+                                    <Button>-</Button> 
+                                    <div>
+                                    <span className="fs-4">{quantity}</span> in cart
+                                    </div>
+                                    <Button>+</Button>
+                                </div>
+                            <Button variant="danger" size="sm">Remove</Button>
+                        </div>
+                    }
                 </div>
             </Card.Body>
         </Card>
