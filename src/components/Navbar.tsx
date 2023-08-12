@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 export function Navbar() {
     return (
-        <NavbarBs sticky='top' className='shadow mb-4'>
+        <NavbarBs sticky='top' className='shadow mb-4 bg-white'>
             <Container>
                 <Nav className='me-auto'>
                     <Nav.Link to="/" as={NavLink}>Home</Nav.Link>

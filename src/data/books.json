@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Clean Code",
+        "price": 29.99,
+        "imgUrl": "/imgs/clean-code.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Harry Potter And The Philosopher's Stone",
+        "price": 14.50,
+        "imgUrl": "/imgs/harry-potter-1.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Life On Our Planet",
+        "price": 15.89,
+        "imgUrl": "/imgs/life-on-our-planet.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Sapiens",
+        "price": 16.00,
+        "imgUrl": "/imgs/sapiens.jpg"
+    }
+]
